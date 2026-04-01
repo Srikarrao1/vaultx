@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VaultX Presale — Live Demo</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+  :root {
+    --bg: #080c14; --surface: #0e1624; --border: rgba(255,255,255,0.08);
+    --text: #e8edf5; --muted: #6b7a99; --accent: #3b82f6; --accent2: #8b5cf6;
+    --green: #22d3a3; --amber: #f59e0b; --red: #ef4444;
+    --mono: 'Space Mono', monospace; --sans: 'DM Sans', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--sans); background: var(--bg); color: var(--text); min-height: 100vh; padding: 2rem 1rem; }
+  .page { max-width: 860px; margin: 0 auto; }
+  .hero { text-align: center; margin-bottom: 2rem; }
+  .tag { display: inline-block; background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.3); color: var(--accent); font-size: .8rem; font-family: var(--mono); padding: .35rem .9rem; border-radius: 999px; margin-bottom: 1rem; }
+  h1 { font-size: clamp(2rem,5vw,3rem); font-weight: 600; margin-bottom: .75rem; }
+  .gradient { background: linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .sub { color: var(--muted); }
+  .contracts { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem; }
+  .contracts h3 { font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; margin-bottom: .75rem; }
+  .contract-row { display: flex; justify-content: space-between; align-items: center; padding: .5rem 0; border-bottom: 1px solid var(--border); font-size: .85rem; }
+  .contract-row:last-child { border-bottom: none; }
+  .contract-label { color: var(--muted); }
+  .contract-addr { font-family: var(--mono); font-size: .75rem; }
+  .contract-addr a { color: var(--accent); text-decoration: none; }
+  .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+  .wallet-section { text-align: center; padding: 2rem; }
+  .wallet-icon { font-size: 3rem; margin-bottom: 1rem; }
+  .connect-btn { background: linear-gradient(135deg,var(--accent),var(--accent2)); border: none; border-radius: 10px; color: white; font-size: 1rem; padding: .85rem 2.5rem; cursor: pointer; font-family: var(--sans); font-weight: 500; margin-top: 1rem; }
+  .connect-btn:hover { opacity: .85; }
+  .wallet-info { background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.3); border-radius: 8px; padding: .75rem 1rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; }
+  .wallet-addr { font-family: var(--mono); font-size: .85rem; color: var(--accent); }
+  .network-badge { background: rgba(34,211,163,0.1); border: 1px solid rgba(34,211,163,0.3); color: var(--green); font-size: .75rem; font-family: var(--mono); padding: .2rem .6rem; border-radius: 999px; }
+  .round-tabs { display: grid; grid-template-columns: repeat(3,1fr); gap: .75rem; margin-bottom: 1.5rem; }
+  .round-tab { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: .85rem; }
+  .round-tab.active { border-color: var(--accent); }
+  .round-tab .name { font-size: .85rem; font-weight: 500; margin-bottom: .25rem; }
+  .round-tab .status { font-size: .7rem; font-family: var(--mono); color: var(--muted); }
+  .round-tab.active .status { color: var(--green); }
+  .round-tab .raised { font-size: .75rem; color: var(--muted); margin-top: .25rem; }
+  .progress-wrap { margin-bottom: 1.5rem; }
+  .progress-labels { display: flex; justify-content: space-between; font-size: .85rem; margin-bottom: .6rem; }
+  .progress-track { height: 8px; background: rgba(255,255,255,0.05); border-radius: 999px; overflow: hidden; margin-bottom: .5rem; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg,var(--accent),var(--accent2)); border-radius: 999px; transition: width .6s; }
+  .buy-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-label { font-size: .8rem; color: var(--muted); margin-bottom: .4rem; display: block; }
+  .input-row { display: flex; gap: .5rem; }
+  .token-input { flex: 1; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1.1rem; padding: .65rem .9rem; font-family: var(--mono); outline: none; }
+  .token-input:focus { border-color: var(--accent); }
+  .quick { display: flex; gap: .5rem; flex-wrap: wrap; }
+  .qbtn { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 6px; color: var(--muted); font-size: .8rem; padding: .3rem .65rem; cursor: pointer; font-family: var(--mono); }
+  .qbtn:hover { border-color: var(--accent); color: var(--accent); }
+  .estimate { background: rgba(34,211,163,0.08); border: 1px solid rgba(34,211,163,0.2); border-radius: 8px; padding: .75rem 1rem; display: flex; justify-content: space-between; }
+  .est-label { font-size: .8rem; color: var(--muted); }
+  .est-value { font-family: var(--mono); color: var(--green); }
+  .buy-btn { background: linear-gradient(135deg,var(--accent),var(--accent2)); border: none; border-radius: 10px; color: white; font-size: 1rem; padding: .85rem; cursor: pointer; font-family: var(--sans); font-weight: 500; width: 100%; }
+  .buy-btn:disabled { opacity: .45; cursor: not-allowed; }
+  .error-box { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); border-radius: 8px; padding: .6rem .9rem; font-size: .85rem; color: #fca5a5; }
+  .success-box { background: rgba(34,211,163,0.1); border: 1px solid rgba(34,211,163,0.3); border-radius: 8px; padding: .6rem .9rem; font-size: .85rem; color: var(--green); }
+  .stat-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: .75rem; }
+  .stat { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 8px; padding: .75rem; }
+  .stat-label { font-size: .7rem; color: var(--muted); margin-bottom: .25rem; display: block; }
+  .stat-value { font-family: var(--mono); font-size: .95rem; }
+  .tx-link { font-size: .8rem; } .tx-link a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hero">
+    <div class="tag">🚀 VaultX Token Sale — LIVE on Sepolia</div>
+    <h1>Secure Your <span class="gradient">$VTX</span> Allocation</h1>
+    <p class="sub">Three-tier presale · Merkle whitelist · Linear vesting · ETH & BNB</p>
+  </div>
+
+  <!-- Deployed Contract Addresses -->
+  <div class="contracts">
+    <h3>Deployed Contracts — Sepolia Testnet</h3>
+    <div class="contract-row">
+      <span class="contract-label">VaultXToken</span>
+      <span class="contract-addr"><a href="https://sepolia.etherscan.io/address/0x71d8AbB1f0D168B9A20D21Bb49FdD313bD774141" target="_blank">0x71d8...4141 ↗</a></span>
+    </div>
+    <div class="contract-row">
+      <span class="contract-label">PresaleVault</span>
+      <span class="contract-addr"><a href="https://sepolia.etherscan.io/address/0xc620bf8c775e729E179f615e91E0a4549EA4a822" target="_blank">0xc620...a822 ↗</a></span>
+    </div>
+    <div class="contract-row">
+      <span class="contract-label">VaultXStaking</span>
+      <span class="contract-addr"><a href="https://sepolia.etherscan.io/address/0x456347FDDD3793939e6a5ebC57cAe806552A364f" target="_blank">0x4563...64f ↗</a></span>
+    </div>
+  </div>
+
+  <!-- Wallet -->
+  <div class="panel" id="wallet-panel">
+    <div class="wallet-section" id="connect-section">
+      <div class="wallet-icon">🔗</div>
+      <p>Connect MetaMask to interact with the live contracts</p>
+      <button class="connect-btn" onclick="connectWallet()">Connect MetaMask</button>
+    </div>
+    <div id="connected-section" style="display:none">
+      <div class="wallet-info">
+        <span class="wallet-addr" id="wallet-addr"></span>
+        <span class="network-badge">Sepolia Testnet</span>
+      </div>
+      <div class="stat-grid">
+        <div class="stat"><span class="stat-label">ETH Balance</span><span class="stat-value" id="eth-balance">—</span></div>
+        <div class="stat"><span class="stat-label">VTX Balance</span><span class="stat-value" id="vtx-balance">—</span></div>
+        <div class="stat"><span class="stat-label">Total Raised</span><span class="stat-value" id="total-raised">—</span></div>
+        <div class="stat"><span class="stat-label">Hardcap</span><span class="stat-value" id="hardcap">2,600 ETH</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Round Tabs -->
+  <div class="round-tabs">
+    <div class="round-tab active" id="tab-0">
+      <div class="name">Pre-Seed</div>
+      <div class="status">● NEXT</div>
+      <div class="raised">0.00005 ETH/VTX · 100 ETH cap</div>
+    </div>
+    <div class="round-tab" id="tab-1">
+      <div class="name">Seed</div>
+      <div class="status">○ Soon</div>
+      <div class="raised">0.0001 ETH/VTX · 500 ETH cap</div>
+    </div>
+    <div class="round-tab" id="tab-2">
+      <div class="name">Public</div>
+      <div class="status">○ Soon</div>
+      <div class="raised">0.0002 ETH/VTX · 2000 ETH cap</div>
+    </div>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-wrap">
+    <div class="progress-labels">
+      <span id="raised-label" style="font-family:var(--mono)">0.0 ETH raised</span>
+      <span style="color:var(--accent);font-family:var(--mono)" id="pct-label">0.0%</span>
+      <span style="color:var(--muted)">2,600 ETH goal</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+  </div>
+
+  <!-- Buy Form -->
+  <div class="panel">
+    <h3 style="margin-bottom:1rem">Buy $VTX Tokens</h3>
+    <div class="buy-form">
+      <div>
+        <label class="form-label">Amount (ETH) — Sale opens when round is activated</label>
+        <div class="input-row">
+          <input type="number" class="token-input" id="buy-amount" placeholder="0.01" min="0.01" step="0.01" oninput="updateEstimate()">
+          <button class="qbtn" onclick="setAmount('0.01')">MAX</button>
+        </div>
+        <div class="quick" style="margin-top:.5rem">
+          <button class="qbtn" onclick="setAmount('0.01')">0.01 ETH</button>
+          <button class="qbtn" onclick="setAmount('0.05')">0.05 ETH</button>
+          <button class="qbtn" onclick="setAmount('0.1')">0.1 ETH</button>
+        </div>
+      </div>
+      <div class="estimate" id="estimate-box" style="display:none">
+        <span class="est-label">You receive ≈</span>
+        <span class="est-value" id="est-value">0 VTX</span>
+      </div>
+      <div id="msg-box"></div>
+      <button class="buy-btn" id="buy-btn" onclick="buyTokens()" disabled>
+        Connect wallet to buy
+      </button>
+      <div class="tx-link" id="tx-link"></div>
+    </div>
+  </div>
+
+  <!-- Vesting Info -->
+  <div class="panel">
+    <h3 style="margin-bottom:1rem">Vesting Schedule</h3>
+    <div class="stat-grid">
+      <div class="stat"><span class="stat-label">Vesting Duration</span><span class="stat-value">180 days</span></div>
+      <div class="stat"><span class="stat-label">Cliff</span><span class="stat-value">1 day</span></div>
+      <div class="stat"><span class="stat-label">Your Allocation</span><span class="stat-value" id="vesting-total">—</span></div>
+      <div class="stat"><span class="stat-label">Claimable Now</span><span class="stat-value" id="vesting-claimable">—</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const VAULT_ADDR   = '0xc620bf8c775e729E179f615e91E0a4549EA4a822';
+const TOKEN_ADDR   = '0x71d8AbB1f0D168B9A20D21Bb49FdD313bD774141';
+const SEPOLIA_ID   = 11155111;
+
+const VAULT_ABI = [
+  'function saleOpen() view returns (bool)',
+  'function activeRound() view returns (uint8)',
+  'function rounds(uint8) view returns (uint256,uint256,uint256,uint256,uint256,uint256,uint256,bool,bytes32,bool)',
+  'function totalRaisedAllRounds() view returns (uint256)',
+  'function totalHardcap() view returns (uint256)',
+  'function vestingOf(address) view returns (uint192,uint64,uint128)',
+  'function claimableAmount(address) view returns (uint256)',
+  'function buyTokens(bytes32[]) payable',
+  'function claimVested()',
+];
+const TOKEN_ABI = ['function balanceOf(address) view returns (uint256)'];
+
+let provider, signer, account, vaultContract, tokenContract;
+
+async function connectWallet() {
+  if (!window.ethereum) { alert('Install MetaMask'); return; }
+  try {
+    await window.ethereum.request({ method: 'eth_requestAccounts' });
+    const chainId = parseInt(await window.ethereum.request({ method: 'eth_chainId' }), 16);
+    if (chainId !== SEPOLIA_ID) {
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: '0xaa36a7' }]
+      }).catch(async e => {
+        if (e.code === 4902) await window.ethereum.request({
+          method: 'wallet_addEthereumChain',
+          params: [{ chainId: '0xaa36a7', chainName: 'Sepolia',
+            nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
+            rpcUrls: ['https://eth-sepolia.g.alchemy.com/v2/Yq1CdpQmUBr2_pqTm31k7'],
+            blockExplorerUrls: ['https://sepolia.etherscan.io'] }]
+        });
+      });
+    }
+    provider = new ethers.providers.Web3Provider(window.ethereum);
+    signer   = provider.getSigner();
+    account  = await signer.getAddress();
+    vaultContract = new ethers.Contract(VAULT_ADDR, VAULT_ABI, signer);
+    tokenContract = new ethers.Contract(TOKEN_ADDR, TOKEN_ABI, provider);
+
+    document.getElementById('connect-section').style.display = 'none';
+    document.getElementById('connected-section').style.display = 'block';
+    document.getElementById('wallet-addr').textContent = account.slice(0,6)+'...'+account.slice(-4);
+    document.getElementById('buy-btn').disabled = false;
+    document.getElementById('buy-btn').textContent = 'Buy VTX — Pre-Seed Round';
+
+    await loadData();
+    setInterval(loadData, 12000);
+  } catch(e) { console.error(e); alert('Connection failed: ' + e.message); }
+}
+
+async function loadData() {
+  if (!provider || !account) return;
+  try {
+    const [ethBal, vtxBal, raised, vestData, claimable] = await Promise.all([
+      provider.getBalance(account),
+      tokenContract.balanceOf(account),
+      vaultContract.totalRaisedAllRounds(),
+      vaultContract.vestingOf(account),
+      vaultContract.claimableAmount(account),
+    ]);
+    document.getElementById('eth-balance').textContent = parseFloat(ethers.utils.formatEther(ethBal)).toFixed(4) + ' ETH';
+    document.getElementById('vtx-balance').textContent = parseFloat(ethers.utils.formatEther(vtxBal)).toLocaleString() + ' VTX';
+    document.getElementById('total-raised').textContent = parseFloat(ethers.utils.formatEther(raised)).toFixed(4) + ' ETH';
+    const hardcap = ethers.utils.parseEther('2600');
+    const pct = raised.mul(10000).div(hardcap).toNumber() / 100;
+    document.getElementById('progress-fill').style.width = Math.min(pct, 100) + '%';
+    document.getElementById('pct-label').textContent = pct.toFixed(2) + '%';
+    document.getElementById('raised-label').textContent = parseFloat(ethers.utils.formatEther(raised)).toFixed(4) + ' ETH raised';
+    const total = vestData[0];
+    document.getElementById('vesting-total').textContent = parseFloat(ethers.utils.formatEther(total)).toLocaleString() + ' VTX';
+    document.getElementById('vesting-claimable').textContent = parseFloat(ethers.utils.formatEther(claimable)).toLocaleString() + ' VTX';
+  } catch(e) { console.error('loadData:', e); }
+}
+
+function setAmount(v) {
+  document.getElementById('buy-amount').value = v;
+  updateEstimate();
+}
+
+function updateEstimate() {
+  const amt = parseFloat(document.getElementById('buy-amount').value);
+  if (!amt || amt <= 0) { document.getElementById('estimate-box').style.display='none'; return; }
+  const vtx = amt / 0.00005; // pre-seed price
+  document.getElementById('est-value').textContent = vtx.toLocaleString() + ' VTX';
+  document.getElementById('estimate-box').style.display='flex';
+}
+
+async function buyTokens() {
+  if (!signer) { alert('Connect wallet first'); return; }
+  const amtStr = document.getElementById('buy-amount').value;
+  if (!amtStr || parseFloat(amtStr) <= 0) { showMsg('Enter an amount', 'error'); return; }
+  try {
+    document.getElementById('buy-btn').disabled = true;
+    document.getElementById('buy-btn').textContent = 'Waiting for MetaMask...';
+    showMsg('', '');
+    const value = ethers.utils.parseEther(amtStr);
+    const tx = await vaultContract.buyTokens([], { value });
+    document.getElementById('buy-btn').textContent = 'Transaction pending...';
+    showMsg('Transaction submitted — waiting for confirmation...', 'info');
+    document.getElementById('tx-link').innerHTML = `<a href="https://sepolia.etherscan.io/tx/${tx.hash}" target="_blank">View on Etherscan ↗</a>`;
+    await tx.wait();
+    showMsg('✅ Purchase confirmed! Check your vesting schedule.', 'success');
+    await loadData();
+  } catch(e) {
+    const msg = e?.reason ?? e?.message ?? 'Transaction failed';
+    showMsg('⚠ ' + msg.replace('execution reverted: ',''), 'error');
+  } finally {
+    document.getElementById('buy-btn').disabled = false;
+    document.getElementById('buy-btn').textContent = 'Buy VTX — Pre-Seed Round';
+  }
+}
+
+function showMsg(text, type) {
+  const box = document.getElementById('msg-box');
+  if (!text) { box.innerHTML=''; return; }
+  box.innerHTML = `<div class="${type==='error'?'error-box':'success-box'}">${text}</div>`;
+}
+
+window.ethereum?.on('accountsChanged', () => window.location.reload());
+window.ethereum?.on('chainChanged', () => window.location.reload());
+</script>
+</body>
+</html>
