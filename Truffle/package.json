@@ -1,0 +1,21 @@
+{
+  "name": "vaultx-hardhat",
+  "version": "1.0.0",
+  "description": "Hardhat test environment for VaultX contracts",
+  "scripts": {
+    "test": "hardhat --config hardhat.config.cjs test test/presale.test.cjs",
+    "compile": "hardhat --config hardhat.config.cjs compile",
+    "coverage": "hardhat --config hardhat.config.cjs coverage"
+  },
+  "devDependencies": {
+    "hardhat": "^2.22.0",
+    "@nomicfoundation/hardhat-toolbox": "hh2",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.10",
+    "chai": "^4.3.7",
+    "merkletreejs": "^0.3.11",
+    "keccak256": "^1.0.6"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.2"
+  }
+}
