@@ -31,4 +31,9 @@ typechain
 
 #Truffle files
 /Truffle/build
-/Truffle/data
+/Truffle/dataTruffle/.env
+Truffle/coverage/
+Truffle/coverage.json
+Truffle/artifacts/
+Truffle/cache/
+Truffle/.nyc_output/
