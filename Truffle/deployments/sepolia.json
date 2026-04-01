@@ -1,0 +1,15 @@
+{
+  "network": "sepolia",
+  "chainId": "11155111",
+  "deployer": "0xb5d601B27821abF4Ca179402C5C3B82c0eAe9378",
+  "treasury": "0xb5d601B27821abF4Ca179402C5C3B82c0eAe9378",
+  "deployedAt": "2026-04-01T13:55:24.804Z",
+  "contracts": {
+    "VaultXToken": "0x71d8AbB1f0D168B9A20D21Bb49FdD313bD774141",
+    "PresaleVault": "0xc620bf8c775e729E179f615e91E0a4549EA4a822",
+    "VaultXStaking": "0x456347FDDD3793939e6a5ebC57cAe806552A364f"
+  },
+  "config": {
+    "blocksPerYear": 2628000
+  }
+}

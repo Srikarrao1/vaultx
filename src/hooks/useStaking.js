@@ -39,15 +39,15 @@ const POLL_BLOCKS = 12; // poll every ~12 blocks
 const BLOCK_TIME_MS = 12_000;
 
 const STAKING_ADDRESSES = {
-  5     : process.env.NEXT_PUBLIC_STAKING_GOERLI      ?? "",
-  97    : process.env.NEXT_PUBLIC_STAKING_BSC_TESTNET ?? "",
-  31337 : process.env.NEXT_PUBLIC_STAKING_LOCAL        ?? "",
+  11155111 : import.meta.env.VITE_STAKING_SEPOLIA     ?? "", // Sepolia
+  97       : import.meta.env.VITE_STAKING_BSC_TESTNET ?? "", // BSC Testnet
+  31337    : import.meta.env.VITE_STAKING_LOCAL        ?? "", // Localhost
 };
 
 const TOKEN_ADDRESSES = {
-  5     : process.env.NEXT_PUBLIC_TOKEN_GOERLI      ?? "",
-  97    : process.env.NEXT_PUBLIC_TOKEN_BSC_TESTNET ?? "",
-  31337 : process.env.NEXT_PUBLIC_TOKEN_LOCAL        ?? "",
+  11155111 : import.meta.env.VITE_TOKEN_SEPOLIA       ?? "", // Sepolia
+  97       : import.meta.env.VITE_TOKEN_BSC_TESTNET   ?? "", // BSC Testnet
+  31337    : import.meta.env.VITE_TOKEN_LOCAL          ?? "", // Localhost
 };
 
 // ─── Tier metadata ────────────────────────────────────────────────────────────

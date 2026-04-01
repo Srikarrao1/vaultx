@@ -35,9 +35,9 @@ const POLL_INTERVAL_MS = 12_000; // ~12 seconds (1 Ethereum block)
 
 // Contract addresses per chainId — set via env or deployment artifact
 const CONTRACT_ADDRESSES = {
-  5     : process.env.NEXT_PUBLIC_VAULT_GOERLI      ?? "", // Goerli
-  97    : process.env.NEXT_PUBLIC_VAULT_BSC_TESTNET ?? "", // BSC Testnet
-  31337 : process.env.NEXT_PUBLIC_VAULT_LOCAL        ?? "", // Localhost
+  11155111 : import.meta.env.VITE_VAULT_SEPOLIA      ?? "", // Sepolia
+  97       : import.meta.env.VITE_VAULT_BSC_TESTNET  ?? "", // BSC Testnet
+  31337    : import.meta.env.VITE_VAULT_LOCAL         ?? "", // Localhost
 };
 
 // ─── Types ────────────────────────────────────────────────────────────────────

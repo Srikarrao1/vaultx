@@ -145,24 +145,24 @@ contract VaultXStaking is Ownable, ReentrancyGuard, Pausable {
     // Admin
     // ─────────────────────────────────────────────
 
-    function setBaseApy(uint256 _apyBps) external onlyOwner {
-        require(_apyBps > 0 && _apyBps <= 100_000, "VaultXStaking: bad APY");
+    function setBaseApy(uint256 apyBps) external onlyOwner {
+        require(apyBps > 0 && apyBps <= 100_000, "VaultXStaking: bad APY");
         _updatePool();
-        baseApyBps = _apyBps;
-        emit BaseApyUpdated(_apyBps);
+        baseApyBps = apyBps;
+        emit BaseApyUpdated(apyBps);
     }
 
-    function setTreasury(address _treasury) external onlyOwner {
-        require(_treasury != address(0), "VaultXStaking: zero address");
-        treasury = _treasury;
-        emit TreasuryUpdated(_treasury);
+    function setTreasury(address newTreasury) external onlyOwner {
+        require(newTreasury != address(0), "VaultXStaking: zero address");
+        treasury = newTreasury;
+        emit TreasuryUpdated(newTreasury);
     }
 
-    function setBlocksPerYear(uint256 _bpy) external onlyOwner {
-        require(_bpy > 0, "VaultXStaking: zero");
+    function setBlocksPerYear(uint256 bpy) external onlyOwner {
+        require(bpy > 0, "VaultXStaking: zero");
         _updatePool();
-        blocksPerYear = _bpy;
-        emit BlocksPerYearUpdated(_bpy);
+        blocksPerYear = bpy;
+        emit BlocksPerYearUpdated(bpy);
     }
 
     function setTierMinStake(Tier tier, uint256 minStake) external onlyOwner {

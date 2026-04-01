@@ -19,6 +19,8 @@ import Swap from './containers/swap';
 import Presale from './containers/pre-sale';
 import Mint from './containers/mint';
 import Stake from './containers/stake';
+import VaultXPresale from '../containers/pre-sale';
+import VaultXStake from '../containers/stake';
 
 
 const App = () => {
@@ -46,6 +48,8 @@ const App = () => {
           <Route path="/pre-sale" element={<Presale />} />
           <Route path="/mint" element={<Mint />} />
           <Route path="/stake" element={<Stake />} />
+          <Route path="/vaultx-presale" element={<VaultXPresale />} />
+          <Route path="/vaultx-stake" element={<VaultXStake />} />
 
           <Route
             path="/nonauthenticated"

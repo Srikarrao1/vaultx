@@ -194,16 +194,16 @@ contract PresaleVault is Ownable, ReentrancyGuard, Pausable {
         rounds[roundIndex].pricePerToken = pricePerToken;
     }
 
-    function setTreasury(address _treasury) external onlyOwner {
-        require(_treasury != address(0), "PresaleVault: zero address");
-        treasury = _treasury;
-        emit TreasuryUpdated(_treasury);
+    function setTreasury(address newTreasury) external onlyOwner {
+        require(newTreasury != address(0), "PresaleVault: zero address");
+        treasury = newTreasury;
+        emit TreasuryUpdated(newTreasury);
     }
 
-    function setVestingDuration(uint256 _duration) external onlyOwner {
-        require(_duration > 0, "PresaleVault: zero duration");
-        vestingDuration = _duration;
-        emit VestingDurationUpdated(_duration);
+    function setVestingDuration(uint256 duration) external onlyOwner {
+        require(duration > 0, "PresaleVault: zero duration");
+        vestingDuration = duration;
+        emit VestingDurationUpdated(duration);
     }
 
     function pause()   external onlyOwner { _pause(); }

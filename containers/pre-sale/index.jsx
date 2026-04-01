@@ -3,10 +3,11 @@
 // Wired to PresaleVault via usePresale hook
 
 "use client";
+import React from "react";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { ethers } from "ethers";
-import { useWeb3React } from "@web3-react/core";
+// using window.ethereum directly
 import { usePresale, formatVTX, ROUND_NAMES } from "../../src/hooks/usePresale";
 import BuyWidget from "../../src/components/presale/BuyWidget";
 
@@ -261,7 +262,43 @@ function ConnectPrompt({ onConnect }) {
 // ─── Main Page ───────────────────────────────────────────────────────────────
 
 export default function PresalePage() {
-  const { activate } = useWeb3React();
+
+
+  // Direct MetaMask connection bypassing Moralis
+  const handleConnectMetaMask = async () => {
+    if (!window.ethereum) { alert("Install MetaMask first"); return; }
+    try {
+      await window.ethereum.request({ method: 'eth_requestAccounts' });
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: '0xaa36a7' }],
+      }).catch(async (e) => {
+        if (e.code === 4902) await window.ethereum.request({
+          method: 'wallet_addEthereumChain',
+          params: [{ chainId: '0xaa36a7', chainName: 'Sepolia',
+            nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
+            rpcUrls: ['https://eth-sepolia.g.alchemy.com/v2/Yq1CdpQmUBr2_pqTm31k7'],
+            blockExplorerUrls: ['https://sepolia.etherscan.io'] }]
+        });
+      });
+      window.location.reload();
+    } catch(e) { console.error(e); }
+  };
+
+  const [ethAccount, setEthAccount] = useState(null);
+  const [ethChainId, setEthChainId] = useState(null);
+
+  useEffect(() => {
+    if (!window.ethereum) return;
+    window.ethereum.request({ method: 'eth_accounts' }).then(accounts => {
+      if (accounts[0]) setEthAccount(accounts[0]);
+    });
+    window.ethereum.request({ method: 'eth_chainId' }).then(chainId => {
+      setEthChainId(parseInt(chainId, 16));
+    });
+    window.ethereum.on('accountsChanged', accs => setEthAccount(accs[0] || null));
+    window.ethereum.on('chainChanged', cId => setEthChainId(parseInt(cId, 16)));
+  }, []);
 
   const {
     isActive,
@@ -287,14 +324,17 @@ export default function PresalePage() {
     error,
   } = usePresale();
 
+  // Use MetaMask directly — overrides Web3React isActive
+  const _isActive = !!ethAccount || isActive;
+  const _account  = ethAccount  || account;
+
+
+
+
+
   const [activeTab, setActiveTab] = useState("buy"); // "buy" | "vesting"
 
-  // Connect wallet handler — wire to your preferred connector
-  const handleConnect = () => {
-    // Example: inject connector from @web3-react/injected-connector
-    // activate(injectedConnector);
-    window.alert("Wire activate() to your Web3React connector setup");
-  };
+  const handleConnect = handleConnectMetaMask;
 
   if (loading) {
     return (
@@ -337,7 +377,7 @@ export default function PresalePage() {
 
       {/* ── Main panel ────────────────────────────────────────────── */}
       <div className="presale-panel">
-        {!isActive ? (
+        {!_isActive ? (
           <ConnectPrompt onConnect={handleConnect} />
         ) : (
           <>
@@ -368,7 +408,7 @@ export default function PresalePage() {
                 currentRound={currentRound}
                 activeRound={activeRound}
                 saleOpen={saleOpen}
-                account={account}
+                account={_account}
                 chainId={chainId}
                 estimateTokens={estimateTokens}
                 walletContrib={walletContrib}

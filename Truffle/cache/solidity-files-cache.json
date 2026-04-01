@@ -2,14 +2,14 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/srikar/work/vaultx-dapp-project/Truffle/contracts/PresaleVault.sol": {
-      "lastModificationDate": 1775044954061,
-      "contentHash": "ebd0703ae84e3e9083d2a3c9293feeb2",
+      "lastModificationDate": 1775050181013,
+      "contentHash": "d61f329ad1d2f80acc90598e666c639a",
       "sourceName": "contracts/PresaleVault.sol",
       "solcConfig": {
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -26,9 +26,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -54,7 +51,7 @@
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -71,9 +68,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -97,7 +91,7 @@
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -114,9 +108,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -138,7 +129,7 @@
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -155,9 +146,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -179,7 +167,7 @@
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -196,9 +184,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -220,7 +205,7 @@
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -237,9 +222,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -261,7 +243,7 @@
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -278,9 +260,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -305,7 +284,7 @@
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -322,9 +301,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -350,7 +326,7 @@
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -367,9 +343,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -389,7 +362,7 @@
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -406,9 +379,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -430,7 +400,7 @@
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -447,9 +417,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -469,7 +436,7 @@
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -486,9 +453,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -502,84 +466,6 @@
         "IERC20Metadata"
       ]
     },
-    "/Users/srikar/work/vaultx-dapp-project/Truffle/node_modules/@openzeppelin/contracts/utils/cryptography/ECDSA.sol": {
-      "lastModificationDate": 1775030576377,
-      "contentHash": "b038f3665d2262af34fe6009e3cd78dd",
-      "sourceName": "@openzeppelin/contracts/utils/cryptography/ECDSA.sol",
-      "solcConfig": {
-        "version": "0.8.26",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "evmVersion": "cancun",
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": false
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "ECDSA"
-      ]
-    },
-    "/Users/srikar/work/vaultx-dapp-project/Truffle/node_modules/@openzeppelin/contracts/utils/Nonces.sol": {
-      "lastModificationDate": 1775030576589,
-      "contentHash": "c32d108058718efb9061b88e83a83f79",
-      "sourceName": "@openzeppelin/contracts/utils/Nonces.sol",
-      "solcConfig": {
-        "version": "0.8.26",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "evmVersion": "cancun",
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": false
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "Nonces"
-      ]
-    },
     "/Users/srikar/work/vaultx-dapp-project/Truffle/node_modules/@openzeppelin/contracts/utils/cryptography/EIP712.sol": {
       "lastModificationDate": 1775030576378,
       "contentHash": "1351802e3aa364e90aacf03f65b78176",
@@ -588,7 +474,7 @@
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -605,9 +491,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -623,15 +506,15 @@
         "EIP712"
       ]
     },
-    "/Users/srikar/work/vaultx-dapp-project/Truffle/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol": {
-      "lastModificationDate": 1775030576570,
-      "contentHash": "274b0eacbd66ff78b8f749cd8105bab0",
-      "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol",
+    "/Users/srikar/work/vaultx-dapp-project/Truffle/node_modules/@openzeppelin/contracts/utils/Nonces.sol": {
+      "lastModificationDate": 1775030576589,
+      "contentHash": "c32d108058718efb9061b88e83a83f79",
+      "sourceName": "@openzeppelin/contracts/utils/Nonces.sol",
       "solcConfig": {
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -648,9 +531,78 @@
                 "ast"
               ]
             }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Nonces"
+      ]
+    },
+    "/Users/srikar/work/vaultx-dapp-project/Truffle/node_modules/@openzeppelin/contracts/utils/cryptography/ECDSA.sol": {
+      "lastModificationDate": 1775030576377,
+      "contentHash": "b038f3665d2262af34fe6009e3cd78dd",
+      "sourceName": "@openzeppelin/contracts/utils/cryptography/ECDSA.sol",
+      "solcConfig": {
+        "version": "0.8.26",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
           },
-          "metadata": {
-            "useLiteralContent": false
+          "evmVersion": "cancun",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "ECDSA"
+      ]
+    },
+    "/Users/srikar/work/vaultx-dapp-project/Truffle/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol": {
+      "lastModificationDate": 1775030576570,
+      "contentHash": "274b0eacbd66ff78b8f749cd8105bab0",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol",
+      "solcConfig": {
+        "version": "0.8.26",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "cancun",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
           }
         }
       },
@@ -670,7 +622,7 @@
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -687,9 +639,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -701,47 +650,6 @@
         "IERC5267"
       ]
     },
-    "/Users/srikar/work/vaultx-dapp-project/Truffle/node_modules/@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol": {
-      "lastModificationDate": 1775030576587,
-      "contentHash": "fab97298382d4c32182a66ec35255b71",
-      "sourceName": "@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol",
-      "solcConfig": {
-        "version": "0.8.26",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "evmVersion": "cancun",
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": false
-          }
-        }
-      },
-      "imports": [
-        "../Strings.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.24"
-      ],
-      "artifacts": [
-        "MessageHashUtils"
-      ]
-    },
     "/Users/srikar/work/vaultx-dapp-project/Truffle/node_modules/@openzeppelin/contracts/utils/ShortStrings.sol": {
       "lastModificationDate": 1775030576600,
       "contentHash": "193937821a0ace7308133b4c68f6b9be",
@@ -750,7 +658,7 @@
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -767,9 +675,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -783,15 +688,15 @@
         "ShortStrings"
       ]
     },
-    "/Users/srikar/work/vaultx-dapp-project/Truffle/node_modules/@openzeppelin/contracts/utils/Strings.sol": {
-      "lastModificationDate": 1775030576603,
-      "contentHash": "d2fa243e766a193585b7e9bf36898d80",
-      "sourceName": "@openzeppelin/contracts/utils/Strings.sol",
+    "/Users/srikar/work/vaultx-dapp-project/Truffle/node_modules/@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol": {
+      "lastModificationDate": 1775030576587,
+      "contentHash": "fab97298382d4c32182a66ec35255b71",
+      "sourceName": "@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol",
       "solcConfig": {
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -808,9 +713,80 @@
                 "ast"
               ]
             }
+          }
+        }
+      },
+      "imports": [
+        "../Strings.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "MessageHashUtils"
+      ]
+    },
+    "/Users/srikar/work/vaultx-dapp-project/Truffle/node_modules/@openzeppelin/contracts/utils/StorageSlot.sol": {
+      "lastModificationDate": 1775030576603,
+      "contentHash": "e656d64c4ce918f3d13030b91c935134",
+      "sourceName": "@openzeppelin/contracts/utils/StorageSlot.sol",
+      "solcConfig": {
+        "version": "0.8.26",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
           },
-          "metadata": {
-            "useLiteralContent": false
+          "evmVersion": "cancun",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "StorageSlot"
+      ]
+    },
+    "/Users/srikar/work/vaultx-dapp-project/Truffle/node_modules/@openzeppelin/contracts/utils/Strings.sol": {
+      "lastModificationDate": 1775030576603,
+      "contentHash": "d2fa243e766a193585b7e9bf36898d80",
+      "sourceName": "@openzeppelin/contracts/utils/Strings.sol",
+      "solcConfig": {
+        "version": "0.8.26",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "cancun",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
           }
         }
       },
@@ -835,7 +811,7 @@
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -852,9 +828,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -869,15 +842,15 @@
         "Math"
       ]
     },
-    "/Users/srikar/work/vaultx-dapp-project/Truffle/node_modules/@openzeppelin/contracts/utils/Bytes.sol": {
-      "lastModificationDate": 1775030576351,
-      "contentHash": "3b32ea3a40a2d708f61e7161f081ca93",
-      "sourceName": "@openzeppelin/contracts/utils/Bytes.sol",
+    "/Users/srikar/work/vaultx-dapp-project/Truffle/node_modules/@openzeppelin/contracts/utils/math/SafeCast.sol": {
+      "lastModificationDate": 1775030576599,
+      "contentHash": "f28a38cd37f4225d0a91fb5405dd850f",
+      "sourceName": "@openzeppelin/contracts/utils/math/SafeCast.sol",
       "solcConfig": {
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -894,9 +867,42 @@
                 "ast"
               ]
             }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "SafeCast"
+      ]
+    },
+    "/Users/srikar/work/vaultx-dapp-project/Truffle/node_modules/@openzeppelin/contracts/utils/Bytes.sol": {
+      "lastModificationDate": 1775030576351,
+      "contentHash": "3b32ea3a40a2d708f61e7161f081ca93",
+      "sourceName": "@openzeppelin/contracts/utils/Bytes.sol",
+      "solcConfig": {
+        "version": "0.8.26",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
           },
-          "metadata": {
-            "useLiteralContent": false
+          "evmVersion": "cancun",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
           }
         }
       },
@@ -918,7 +924,7 @@
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -935,9 +941,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -951,45 +954,6 @@
         "SignedMath"
       ]
     },
-    "/Users/srikar/work/vaultx-dapp-project/Truffle/node_modules/@openzeppelin/contracts/utils/math/SafeCast.sol": {
-      "lastModificationDate": 1775030576599,
-      "contentHash": "f28a38cd37f4225d0a91fb5405dd850f",
-      "sourceName": "@openzeppelin/contracts/utils/math/SafeCast.sol",
-      "solcConfig": {
-        "version": "0.8.26",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "evmVersion": "cancun",
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": false
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "SafeCast"
-      ]
-    },
     "/Users/srikar/work/vaultx-dapp-project/Truffle/node_modules/@openzeppelin/contracts/utils/Panic.sol": {
       "lastModificationDate": 1775030576594,
       "contentHash": "2133dc13536b4a6a98131e431fac59e1",
@@ -998,7 +962,7 @@
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -1015,9 +979,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -1029,45 +990,6 @@
         "Panic"
       ]
     },
-    "/Users/srikar/work/vaultx-dapp-project/Truffle/node_modules/@openzeppelin/contracts/utils/StorageSlot.sol": {
-      "lastModificationDate": 1775030576603,
-      "contentHash": "e656d64c4ce918f3d13030b91c935134",
-      "sourceName": "@openzeppelin/contracts/utils/StorageSlot.sol",
-      "solcConfig": {
-        "version": "0.8.26",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "evmVersion": "cancun",
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": false
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "StorageSlot"
-      ]
-    },
     "/Users/srikar/work/vaultx-dapp-project/Truffle/node_modules/@openzeppelin/contracts/utils/cryptography/Hashes.sol": {
       "lastModificationDate": 1775030576535,
       "contentHash": "073b9c3ce7bc358a876ed2b3479db88c",
@@ -1076,7 +998,7 @@
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -1093,9 +1015,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },
@@ -1108,14 +1027,14 @@
       ]
     },
     "/Users/srikar/work/vaultx-dapp-project/Truffle/contracts/VaultXStaking.sol": {
-      "lastModificationDate": 1775044626867,
-      "contentHash": "7d002869863ceda09a029f6c14cf6007",
+      "lastModificationDate": 1775050181014,
+      "contentHash": "aab64383529a22f8f3566de820bc6666",
       "sourceName": "contracts/VaultXStaking.sol",
       "solcConfig": {
         "version": "0.8.26",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "evmVersion": "cancun",
@@ -1132,9 +1051,6 @@
                 "ast"
               ]
             }
-          },
-          "metadata": {
-            "useLiteralContent": false
           }
         }
       },

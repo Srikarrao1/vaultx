@@ -342,24 +342,17 @@ function StatsBar({ totalStaked, enrichedPositions, totalPending }) {
 // ─── Main page ────────────────────────────────────────────────────────────────
 
 export default function StakePage() {
-  const {
-    isActive,
-    account,
-    tierConfigs,
-    effectiveApys,
-    totalStaked,
-    tokenBalance,
-    enrichedPositions,
-    totalPending,
-    stake,
-    unstake,
-    claimRewards,
-    claimAllRewards,
-    loading,
-    txPending,
-    txHash,
-    error,
-  } = useStaking();
+  const stakingData = useStaking();
+  const isActive   = stakingData.isActive;
+  const account    = stakingData.account;
+  // Preview mock data when wallet not connected
+  const tierConfigs      = stakingData.tierConfigs.length    ? stakingData.tierConfigs    : [{lockDuration:0,multiplierBps:10000,minStake:0},{lockDuration:0,multiplierBps:15000,minStake:0},{lockDuration:0,multiplierBps:20000,minStake:0}];
+  const effectiveApys    = stakingData.effectiveApys.length  ? stakingData.effectiveApys  : [2000n, 3000n, 4000n];
+  const totalStaked      = stakingData.totalStaked  || 0n;
+  const tokenBalance     = stakingData.tokenBalance || 0n;
+  const enrichedPositions = stakingData.enrichedPositions || [];
+  const totalPending     = stakingData.totalPending || 0n;
+  const { stake, unstake, claimRewards, claimAllRewards, loading, txPending, txHash, error } = stakingData;
 
   if (loading) {
     return (
@@ -370,23 +363,7 @@ export default function StakePage() {
     );
   }
 
-  if (!isActive || !account) {
-    return (
-      <div className="stake-page">
-        <header className="stake-hero">
-          <div className="stake-hero__tag">⚡ VaultX Staking</div>
-          <h1 className="stake-hero__title">Earn Rewards on Your <span className="gradient-text">$VTX</span></h1>
-          <p className="stake-hero__sub">Lock tokens, earn per-block rewards, multiply by lock tier</p>
-        </header>
-        <div className="connect-wall">
-          <div className="connect-wall__icon">🔒</div>
-          <h3>Connect your wallet to stake</h3>
-          <p>Supports MetaMask, WalletConnect, Coinbase Wallet</p>
-        </div>
-        <style>{STYLES}</style>
-      </div>
-    );
-  }
+  // Show full UI in preview mode even without wallet
 
   return (
     <div className="stake-page">
